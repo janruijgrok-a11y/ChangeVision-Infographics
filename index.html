@@ -11,40 +11,43 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* The core brand colors */
+            /* De kernkleuren van de huisstijl: Paars en Wit */
         }
         .bg-dark {
-            background-color: #0D0D0D; /* Dark background (near black) */
+            background-color: #390840; /* Donker Paars (Hoofdachtergrond) */
         }
         .bg-section {
-            background-color: #1A1A1A; /* Dark gray for cards and header contrast */
+            background-color: #4D1B59; /* Midden Paars (Kaarten en Header) */
         }
         .text-primary {
-            color: #F2F2F2; /* Light gray text */
+            color: #FFFFFF; /* Witte tekst */
+        }
+        .text-subtle {
+            color: #D9D9D9; /* Gebroken wit voor subtiele tekst */
         }
         .text-accent-main {
-            color: #F25C05; /* Red-orange accent (primary) */
+            color: #F25C05; /* Rood-oranje accent (onveranderd voor branding) */
         }
         .text-accent-light {
-            color: #F28705; /* Dark orange accent (secondary) */
+            color: #F28705; /* Donker oranje accent (onveranderd voor branding) */
         }
         .card-border {
-            border: 1px solid #262626; /* Original subtle border color */
+            border: 1px solid #5C2D6D; /* Subtiele rand die bij het paars past */
             transition: border-color 0.3s ease;
         }
         .card-hover:hover .card-border {
-            border-color: #F25C05; /* Activate the orange border on hover */
+            border-color: #F25C05; /* Activeer de oranje rand bij hover */
         }
     </style>
 </head>
 <body class="bg-dark text-primary antialiased min-h-screen flex flex-col">
 
-    <header class="text-center py-16 md:py-24 bg-section shadow-xl border-b border-[#262626]">
+    <header class="text-center py-16 md:py-24 bg-section shadow-xl border-b border-[#5C2D6D]">
         <div class="max-w-4xl mx-auto px-4">
             <h1 class="text-5xl md:text-7xl font-black uppercase tracking-widest leading-none">
                 Change<span class="text-accent-main">Vision</span>
             </h1>
-            <p class="text-2xl mt-4 font-light text-gray-400">AI Game Changers</p>
+            <p class="text-2xl mt-4 font-light text-subtle">AI Game Changers</p>
         </div>
     </header>
 
@@ -55,12 +58,12 @@
             <h2 class="text-4xl font-extrabold mb-4 text-accent-light border-b-2 border-accent-main inline-block pb-1">
                 Welcome to the ChangeVision Analytics Hub
             </h2>
-            <p class="text-xl text-gray-300 mb-8 mt-4">
+            <p class="text-xl text-subtle mb-8 mt-4">
                 This environment serves as the central location for the interactive Infographics. 
                 Here, we explore the fundamental shifts in the economic and social landscape 
                 caused by the rapid rise of Artificial Intelligence.
             </p>
-            <p class="text-gray-400 font-medium italic">
+            <p class="text-subtle font-medium italic">
                 Select a theme below to dive deeper into the analysis.
             </p>
         </section>
@@ -76,7 +79,7 @@
                         <h3 class="text-3xl font-bold mb-4">
                             Navigating the AI Revolution
                         </h3>
-                        <p class="text-gray-400 mb-6">
+                        <p class="text-subtle mb-6">
                             An analysis of the threatened business model of Big Tech, the Gini effect of AI, and the shift in employment.
                         </p>
                     </div>
@@ -96,7 +99,7 @@
                         <h3 class="text-3xl font-bold mb-4">
                             Machiavelli in the 21st Century
                         </h3>
-                        <p class="text-gray-400 mb-6">
+                        <p class="text-subtle mb-6">
                             A comparison between the Anatomy of Old Power (physical) versus the Anatomy of AI Power (cognitive and data).
                         </p>
                     </div>
@@ -112,8 +115,8 @@
 
     </main>
 
-    <footer class="text-center py-8 border-t border-[#262626] bg-section">
-        <p class="text-gray-500 text-sm">ChangeVision &copy; 2025 | Published via GitHub Pages.</p>
+    <footer class="text-center py-8 border-t border-[#5C2D6D] bg-section">
+        <p class="text-subtle text-sm">ChangeVision &copy; 2025 | Published via GitHub Pages.</p>
     </footer>
 
 </body>
