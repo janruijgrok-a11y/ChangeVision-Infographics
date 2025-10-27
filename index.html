@@ -1,113 +1,120 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChangeVision: Machiavelli in de 21e Eeuw</title>
+    <title>ChangeVision Infographics Overview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            /* The core brand colors */
         }
-        .gradient-text {
-            background: linear-gradient(to right, #F28705, #F25C05);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bg-dark {
+            background-color: #0D0D0D; /* Dark background (near black) */
+        }
+        .bg-section {
+            background-color: #1A1A1A; /* Dark gray for cards and header contrast */
+        }
+        .text-primary {
+            color: #F2F2F2; /* Light gray text */
+        }
+        .text-accent-main {
+            color: #F25C05; /* Red-orange accent (primary) */
+        }
+        .text-accent-light {
+            color: #F28705; /* Dark orange accent (secondary) */
+        }
+        .card-border {
+            border: 1px solid #262626; /* Original subtle border color */
+            transition: border-color 0.3s ease;
+        }
+        .card-hover:hover .card-border {
+            border-color: #F25C05; /* Activate the orange border on hover */
         }
     </style>
 </head>
-<body class="bg-[#0D0D0D] text-[#F2F2F2] antialiased">
+<body class="bg-dark text-primary antialiased min-h-screen flex flex-col">
 
-    <div class="container mx-auto px-4 py-12 md:py-20">
+    <header class="text-center py-16 md:py-24 bg-section shadow-xl border-b border-[#262626]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-widest leading-none">
+                Change<span class="text-accent-main">Vision</span>
+            </h1>
+            <p class="text-2xl mt-4 font-light text-gray-400">AI Game Changers</p>
+        </div>
+    </header>
 
-        <header class="text-center mb-16 md:mb-24">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider">Change<span class="gradient-text">Vision</span></h1>
-            <p class="text-xl md:text-2xl mt-2 text-gray-400">Machiavelli in de 21e Eeuw: De Anatomie van AI-Macht</p>
-        </header>
+    <main class="container mx-auto px-4 py-16 flex-grow">
+        
+        <!-- Introduction Section -->
+        <section class="max-w-5xl mx-auto mb-20 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-accent-light border-b-2 border-accent-main inline-block pb-1">
+                Welcome to the ChangeVision Analytics Hub
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 mt-4">
+                This environment serves as the central location for the interactive Infographics. 
+                Here, we explore the fundamental shifts in the economic and social landscape 
+                caused by the rapid rise of Artificial Intelligence.
+            </p>
+            <p class="text-gray-400 font-medium italic">
+                Select a theme below to dive deeper into the analysis.
+            </p>
+        </section>
 
-        <main class="space-y-16 md:space-y-24">
-
-            <section id="introduction" class="max-w-4xl mx-auto text-center">
-                <p class="text-lg md:text-xl text-gray-300">
-                    Al eeuwenlang draaide macht om controle over fysieke middelen, militaire dominantie en financiële rijkdom. Maar het spel is veranderd. De principes van Machiavelli worden opnieuw geschreven in het digitale tijdperk. De vraag is niet langer 'wie bezit de legers?', maar 'wie bezit de algoritmes?'
-                </p>
-            </section>
-
-            <section id="old-power" class="bg-[#1A1A1A] p-6 md:p-12 rounded-lg shadow-2xl">
-                <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#F25C05]">De Anatomie van Oude Macht</h2>
-                    <p class="text-gray-300 text-lg">
-                        Traditionele heersers baseerden hun dominantie op tastbare, hiërarchische structuren.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-[#262626] p-6 rounded-lg shadow-xl flex flex-col items-center text-center">
-                        <p class="text-6xl mb-4">⚔️</p>
-                        <h3 class="font-bold text-xl text-[#F28705] mb-2">Fysieke Macht</h3>
-                        <p class="text-gray-400">Controle over land, grondstoffen en legers om rivalen te dwingen en te onderwerpen.</p>
+        <!-- Navigation Cards for Infographics -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+            
+            <!-- Card 1: AI Revolution -->
+            <a href="infographic-ai-revolutie.html" class="block card-hover">
+                <div class="bg-section p-8 rounded-xl shadow-2xl card-border overflow-hidden h-full flex flex-col justify-between">
+                    <div>
+                        <span class="text-accent-main font-extrabold text-sm uppercase tracking-wider mb-2 block">Theme 1</span>
+                        <h3 class="text-3xl font-bold mb-4">
+                            Navigating the AI Revolution
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            An analysis of the threatened business model of Big Tech, the Gini effect of AI, and the shift in employment.
+                        </p>
                     </div>
-                    <div class="bg-[#262626] p-6 rounded-lg shadow-xl flex flex-col items-center text-center">
-                        <p class="text-6xl mb-4">💰</p>
-                        <h3 class="font-bold text-xl text-[#F28705] mb-2">Financiële Macht</h3>
-                        <p class="text-gray-400">Monopolies, handelsroutes en rijkdom om loyaliteit te kopen en invloed uit te oefenen.</p>
-                    </div>
-                    <div class="bg-[#262626] p-6 rounded-lg shadow-xl flex flex-col items-center text-center">
-                        <p class="text-6xl mb-4">📜</p>
-                        <h3 class="font-bold text-xl text-[#F28705] mb-2">Informatiecontrole</h3>
-                        <p class="text-gray-400">Beheer van nieuws en propaganda via staatsmedia en censuur om het narratief te beheersen.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="new-power" class="bg-[#1A1A1A] p-6 md:p-12 rounded-lg shadow-2xl">
-                <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#F25C05]">De Anatomie van AI-Macht</h2>
-                    <p class="text-gray-300 text-lg">
-                        De nieuwe tech-heersers oefenen hun macht uit op een subtielere, maar veel fundamentelere manier.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-[#262626] p-6 rounded-lg shadow-xl flex flex-col items-center text-center">
-                        <p class="text-6xl mb-4">🧠</p>
-                        <h3 class="font-bold text-xl text-[#F28705] mb-2">Cognitieve Controle</h3>
-                        <p class="text-gray-400">Beïnvloeding van gedachten en gedrag door gepersonaliseerde algoritmes en content. Van keuzes tot overtuigingen.</p>
-                    </div>
-                    <div class="bg-[#262626] p-6 rounded-lg shadow-xl flex flex-col items-center text-center">
-                        <p class="text-6xl mb-4">💾</p>
-                        <h3 class="font-bold text-xl text-[#F28705] mb-2">Data Dominantie</h3>
-                        <p class="text-gray-400">Controle over gigantische datasets is de nieuwe 'olie'. Dit vormt de brandstof voor de AI-modellen.</p>
-                    </div>
-                    <div class="bg-[#262626] p-6 rounded-lg shadow-xl flex flex-col items-center text-center">
-                        <p class="text-6xl mb-4">⚙️</p>
-                        <h3 class="font-bold text-xl text-[#F28705] mb-2">Besluitvormingsmacht</h3>
-                        <p class="text-gray-400">De macht om te bepalen wat gebruikers te zien krijgen. Van zoekresultaten tot aanbevolen producten en nieuwsberichten.</p>
+                    <div class="mt-4">
+                        <span class="inline-block text-accent-light font-bold text-lg border-b-2 border-accent-light pb-1">
+                            View Infographic &rarr;
+                        </span>
                     </div>
                 </div>
-            </section>
-
-            <section id="conclusion" class="max-w-4xl mx-auto text-center mt-16 md:mt-24 pt-8 border-t border-gray-800">
-                <h3 class="text-2xl font-bold mb-4">De Grote Verschuiving</h3>
-                <p class="text-gray-400 text-lg">
-                    De oude en nieuwe vormen van macht zijn niet gescheiden, maar verweven. De tech-giganten gebruiken de 'nieuwe macht' om hun financiële en informatieve dominantie te versterken. Ze worden de heersers van de 21e eeuw, niet door dwang, maar door inzicht en voorspelling.
-                </p>
-            </section>
-
-        </main>
-
-        <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-800">
-            <h3 class="text-2xl font-bold">De discussie gaat verder...</h3>
-            <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Dit is slechts het begin. Sluit je aan bij de ChangeVision groep op LinkedIn om samen de toekomst te verkennen, te ervaren en vorm te geven.</p>
-            <a href="https://www.linkedin.com/feed/update/urn:li:activity:6950777640140091392" class="mt-6 inline-block bg-[#F25C05] text-[#0D0D0D] font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-[#F28705] transition-colors" target="_blank">
-                Neem Deel aan de Discussie
             </a>
-        </footer>
 
-    </div>
+            <!-- Card 2: Machiavelli in the 21st Century -->
+            <a href="infographic-machiavelli.html" class="block card-hover">
+                <div class="bg-section p-8 rounded-xl shadow-2xl card-border overflow-hidden h-full flex flex-col justify-between">
+                    <div>
+                        <span class="text-accent-main font-extrabold text-sm uppercase tracking-wider mb-2 block">Theme 2</span>
+                        <h3 class="text-3xl font-bold mb-4">
+                            Machiavelli in the 21st Century
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            A comparison between the Anatomy of Old Power (physical) versus the Anatomy of AI Power (cognitive and data).
+                        </p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block text-accent-light font-bold text-lg border-b-2 border-accent-light pb-1">
+                            View Infographic &rarr;
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 border-t border-[#262626] bg-section">
+        <p class="text-gray-500 text-sm">ChangeVision &copy; 2025 | Published via GitHub Pages.</p>
+    </footer>
 
 </body>
 </html>
-
-
