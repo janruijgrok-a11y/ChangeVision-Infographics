@@ -30,12 +30,15 @@
             background-color: #4D1B59;
             border-left: 4px solid #F25C05;
         }
+        /* Overridden button styles */
         .button-link {
-            background-color: #F25C05;
-            transition: background-color 0.3s;
+            background-color: #FFFFFF; /* White background */
+            color: #000000; /* Black text */
+            transition: background-color 0.3s, color 0.3s;
         }
         .button-link:hover {
-            background-color: #F28705;
+            background-color: #D9D9D9; /* Light gray on hover */
+            color: #000000;
         }
 
         /* --- Section 1: Pie Chart & Legend Styles --- */
@@ -135,8 +138,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header Section -->
-    <header class="text-center pt-16 pb-12 container-section shadow-xl border-b border-[#5C2D6D]">
+    <!-- Header Section --><header class="text-center pt-16 pb-12 container-section shadow-xl border-b border-[#5C2D6D]">
         <div class="max-w-4xl mx-auto px-4">
             <h1 class="text-5xl md:text-6xl font-black uppercase tracking-widest leading-none">
                 Change<span class="text-accent-main">Vision</span>
@@ -150,8 +152,7 @@
 
     <main class="max-w-6xl mx-auto px-4 py-16">
         
-        <!-- Section 1: The Foundation: Revenue Sources (Interactive) -->
-        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+        <!-- Section 1: The Foundation: Revenue Sources (Interactive) --><section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
             <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
                 1. The Foundation: Revenue Sources of Big Tech
             </h3>
@@ -161,8 +162,7 @@
 
             <div class="flex flex-col md:flex-row items-start justify-between gap-10">
                 
-                <!-- Pie Chart Visualization and Dynamic Info Box -->
-                <div class="flex flex-col items-center w-full md:w-auto md:flex-shrink-0">
+                <!-- Pie Chart Visualization and Dynamic Info Box --><div class="flex flex-col items-center w-full md:w-auto md:flex-shrink-0">
                     <div class="pie-chart shadow-2xl border-4 border-white mx-auto"></div>
                     
                     <div id="dynamic-info-box" class="mt-8 p-4 bg-[#5C2D6D] rounded-lg border-l-4 border-accent-main w-full max-w-[250px] transition-all duration-300">
@@ -173,13 +173,11 @@
                     </div>
                 </div>
 
-                <!-- Legend / Key Data -->
-                <div class="flex-grow max-w-lg">
-                    <h4 class="text-2xl font-bold mb-4 text-accent-main">Dominant Revenue Breakdown (Illustrative)</h4>
+                <!-- Legend / Key Data --><div class="flex-grow max-w-lg">
+                    <h4 class="text-2xl font-bold mb-4 text-white">Dominant Revenue Breakdown (Illustrative)</h4>
                     <div class="space-y-2">
                         
-                        <!-- Legend Item: Ads -->
-                        <div class="legend-item p-2" 
+                        <!-- Legend Item: Ads --><div class="legend-item p-2" 
                              onmouseover="updateInfo('Advertising / Data Monetization', 'The core revenue stream, highly vulnerable to AI answer models. Source of massive user data accumulation.')" 
                              onmouseout="resetInfo()">
                             <div class="flex justify-between items-center pb-1 border-b border-[#5C2D6D]">
@@ -191,8 +189,7 @@
                             </div>
                         </div>
 
-                        <!-- Legend Item: Cloud -->
-                        <div class="legend-item p-2" 
+                        <!-- Legend Item: Cloud --><div class="legend-item p-2" 
                              onmouseover="updateInfo('Cloud Services', 'High-margin, rapidly growing segment. Provides the computing power for the AI boom itself, making it a critical strategic asset.')" 
                              onmouseout="resetInfo()">
                             <div class="flex justify-between items-center pb-1 border-b border-[#5C2D6D]">
@@ -204,8 +201,7 @@
                             </div>
                         </div>
                         
-                        <!-- Legend Item: Hardware -->
-                        <div class="legend-item p-2" 
+                        <!-- Legend Item: Hardware --><div class="legend-item p-2" 
                              onmouseover="updateInfo('Hardware Sales', 'Stable income from device ecosystems (e.g., iPhone). Less directly affected by AI content changes than advertising.')" 
                              onmouseout="resetInfo()">
                             <div class="flex justify-between items-center pb-1 border-b border-[#5C2D6D]">
@@ -217,8 +213,7 @@
                             </div>
                         </div>
                         
-                        <!-- Legend Item: Other -->
-                        <div class="legend-item p-2" 
+                        <!-- Legend Item: Other --><div class="legend-item p-2" 
                              onmouseover="updateInfo('Other Ventures', 'Emerging ventures, subscriptions, and minor software licenses. The investment hub for future growth.')" 
                              onmouseout="resetInfo()">
                             <div class="flex justify-between items-center pb-1">
@@ -235,8 +230,7 @@
             </div>
         </section>
 
-        <!-- Section 2: Mighty Entities: Market Value vs. GDP (Interactive Bar Chart) -->
-        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+        <!-- Section 2: Mighty Entities: Market Value vs. GDP (Interactive Bar Chart) --><section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
             <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
                 2. Mighty Entities: Market Value vs. GDP
             </h3>
@@ -246,20 +240,16 @@
 
             <div class="chart-container-2">
                 
-                <!-- Left Column: Tech Market Caps (Bars: Red-Orange) -->
-                <div>
-                    <h4 class="text-2xl font-bold mb-6 text-accent-main">Big Tech Market Value (Trillions USD)</h4>
+                <!-- Left Column: Tech Market Caps (Bars: Red-Orange) --><div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">Big Tech Market Value (Trillions USD)</h4>
                     <div class="bar-wrapper" id="tech-bars">
-                        <!-- Bars will be generated by JS -->
-                    </div>
+                        <!-- Bars will be generated by JS --></div>
                 </div>
 
-                <!-- Right Column: National GDPs (Bars: Orange) -->
-                <div>
-                    <h4 class="text-2xl font-bold mb-6 text-accent-light">Selected National GDPs (Trillions USD)</h4>
+                <!-- Right Column: National GDPs (Bars: Orange) --><div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">Selected National GDPs (Trillions USD)</h4>
                     <div class="bar-wrapper" id="gdp-bars">
-                        <!-- Bars will be generated by JS -->
-                    </div>
+                        <!-- Bars will be generated by JS --></div>
                 </div>
             </div>
 
@@ -269,8 +259,7 @@
         </section>
 
 
-        <!-- Section 3: Death of the Search Engine (Renumbered) -->
-        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+        <!-- Section 3: Death of the Search Engine (Renumbered) --><section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
             <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
                 3. Death of the Search Engine
             </h3>
@@ -279,9 +268,8 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Old Model Card -->
-                <div class="data-card p-6 rounded-lg border-l-4 border-accent-light">
-                    <h4 class="text-2xl font-bold mb-3 text-accent-main">The Old Model: Links & Ads</h4>
+                <!-- Old Model Card --><div class="data-card p-6 rounded-lg border-l-4 border-accent-light">
+                    <h4 class="text-2xl font-bold mb-3 text-white">The Old Model: Links & Ads</h4>
                     <ul class="list-disc pl-5 space-y-2 text-subtle">
                         <li>**Query:** User asks question in search engine.</li>
                         <li>**Result:** Links to external websites.</li>
@@ -289,9 +277,8 @@
                         <li>**Power:** Control over the information gateway (Google is the gatekeeper).</li>
                     </ul>
                 </div>
-                <!-- New Model Card -->
-                <div class="data-card p-6 rounded-lg border-l-4 border-accent-light">
-                    <h4 class="text-2xl font-bold mb-3 text-accent-main">The New Model: AI & Answers</h4>
+                <!-- New Model Card --><div class="data-card p-6 rounded-lg border-l-4 border-accent-light">
+                    <h4 class="text-2xl font-bold mb-3 text-white">The New Model: AI & Answers</h4>
                     <ul class="list-disc pl-5 space-y-2 text-subtle">
                         <li>**Query:** User asks question to AI assistant.</li>
                         <li>**Result:** Direct, summarized answer without external links.</li>
@@ -306,8 +293,7 @@
             </p>
         </section>
 
-        <!-- Section 4: The Great Shift: From Oil to Data (Line Chart) -->
-        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+        <!-- Section 4: The Great Shift: From Oil to Data (Line Chart) --><section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
             <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
                 4. The Great Shift: From Oil to Data
             </h3>
@@ -315,10 +301,8 @@
                 The battle for market dominance has shifted from controlling physical resources (Oil, Industry) to controlling cognitive resources (Data, AI). This visualization illustrates the divergence in market capitalization over two decades.
             </p>
 
-            <!-- Line Chart Visualization -->
-            <div class="relative pt-6 pb-12">
-                <!-- Y-Axis Labels (Illustrative) -->
-                <div class="absolute inset-y-0 left-0 flex flex-col justify-between text-right pr-4 text-subtle text-sm" style="height: 380px;">
+            <!-- Line Chart Visualization --><div class="relative pt-6 pb-12">
+                <!-- Y-Axis Labels (Illustrative) --><div class="absolute inset-y-0 left-0 flex flex-col justify-between text-right pr-4 text-subtle text-sm" style="height: 380px;">
                     <span>$3.5T</span>
                     <span class="text-accent-main font-bold">The AI Apex</span>
                     <span>$2.5T</span>
@@ -327,19 +311,14 @@
                     <span>$0</span>
                 </div>
 
-                <!-- Chart Area -->
-                <div class="line-chart-4 ml-16">
-                    <!-- Lines and Data Points will be generated by JS -->
-                    
-                    <!-- X-Axis Labels -->
-                    <span class="axis-label left-0" style="left: 0%;">2005</span>
+                <!-- Chart Area --><div class="line-chart-4 ml-16">
+                    <!-- Lines and Data Points will be generated by JS --><!-- X-Axis Labels --><span class="axis-label left-0" style="left: 0%;">2005</span>
                     <span class="axis-label" style="left: 50%;">2015</span>
                     <span class="axis-label right-0" style="right: 0%;">2025</span>
                 </div>
             </div>
 
-            <!-- Chart Legend -->
-            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mt-8">
+            <!-- Chart Legend --><div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mt-8">
                 <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 tech-color-1"></span> Apple</span>
                 <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 tech-color-2"></span> Microsoft</span>
                 <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 text-white bg-[#FFD700]"></span> Meta</span>
@@ -353,13 +332,12 @@
             </p>
         </section>
 
-        <!-- Call to Action Footer -->
-        <footer class="text-center pt-10 pb-4">
-            <h4 class="text-3xl font-extrabold text-accent-light mb-4">Share Your Vision</h4>
+        <!-- Call to Action Footer --><footer class="text-center pt-10 pb-4">
+            <h4 class="text-3xl font-extrabold text-white mb-4">Share Your Vision</h4>
             <p class="text-lg text-subtle mb-6 max-w-2xl mx-auto">
                 How should governments and civil society respond to this concentration of data-driven power?
             </p>
-            <a href="https://www.linkedin.com/feed/update/urn:li:activity:6950777640140091392" target="_blank" class="button-link inline-block px-10 py-4 text-xl font-bold text-white rounded-full shadow-lg transform transition duration-300 hover:scale-105">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:6950777640140091392" target="_blank" class="button-link inline-block px-10 py-4 text-xl font-bold rounded-full shadow-lg transform transition duration-300 hover:scale-105">
                 Join the Discussion &rarr;
             </a>
         </footer>
@@ -473,7 +451,7 @@
             const chartContainer = document.querySelector('.line-chart-4');
             if (!chartContainer) return;
 
-            // Helper to get X position based on year (MOVED TO THE OUTER SCOPE OF renderLineChart)
+            // Helper to get X position based on year
             const getX = (year) => {
                 if (year === 2005) return '0%';
                 if (year === 2015) return '50%';
@@ -487,40 +465,6 @@
             dataSection4.forEach(company => {
                 const points = company.points;
                 
-                // Draw Lines between points (simplified/illustrative)
-                for (let i = 0; i < points.length - 1; i++) {
-                    const p1 = points[i];
-                    const p2 = points[i+1];
-                    
-                    const x1 = parseFloat(getX(p1.year));
-                    const y1 = getNormalizedY(p1.value);
-                    const x2 = parseFloat(getX(p2.year));
-                    const y2 = getNormalizedY(p2.value);
-                    
-                    // Simple line drawing using div rotation and translation
-                    const dx = x2 - x1;
-                    const dy = y2 - y1;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-
-                    const lineDiv = document.createElement('div');
-                    lineDiv.className = 'chart-line';
-                    lineDiv.style.backgroundColor = company.color;
-                    lineDiv.style.left = getX(p1.year);
-                    lineDiv.style.top = `${y1}%`;
-                    lineDiv.style.width = `${distance * 0.95}%`; // Fudge factor to meet the point
-                    lineDiv.style.transform = `translateY(-50%) rotate(${angle}deg)`;
-                    lineDiv.style.transformOrigin = '0 0';
-
-                    // Note: The simplified CSS method is highly inaccurate. We'll stick to displaying points 
-                    // and relying on visual perception of the trend, as the complex rotation/scaling 
-                    // is not reliably possible with simple divs and percentages.
-                    
-                    if (Math.abs(dx) > 0.01) {
-                        // Keep the original logic block clean
-                    }
-                }
-
                 // Draw Data Points
                 points.forEach((point, index) => {
                     const pointDiv = document.createElement('div');
@@ -566,18 +510,6 @@
                 });
             });
 
-            // Re-render to connect points via visual lines 
-            // This is a simple visual connector. It's not mathematically accurate but conveys the trend.
-            let paths = [];
-            dataSection4.forEach(company => {
-                const points = company.points.map(p => ({
-                    x: parseFloat(getX(p.year)),
-                    y: getNormalizedY(p.value)
-                }));
-                
-                paths.push({company: company.name, color: company.color, points: points});
-            });
-
             // Use SVG for robust line drawing
             const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
             svg.setAttribute('width', '100%');
@@ -589,11 +521,11 @@
             svg.style.left = '0';
             svg.style.overflow = 'visible';
 
-            paths.forEach(pathData => {
+            dataSection4.forEach(pathData => {
                 let pathString = 'M';
                 pathData.points.forEach(p => {
                     // Convert % to 0-100 viewbox coordinates
-                    pathString += ` ${p.x} ${p.y}`;
+                    pathString += ` ${parseFloat(getX(p.year))} ${getNormalizedY(p.value)}`;
                 });
 
                 const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -603,7 +535,7 @@
                 pathElement.setAttribute('fill', 'none');
                 
                 // Add class for Tech vs Oil visibility
-                const isTech = ['Apple', 'Microsoft', 'Meta', 'Amazon'].includes(pathData.company);
+                const isTech = ['Apple', 'Microsoft', 'Meta', 'Amazon'].includes(pathData.name);
                 if (!isTech) {
                     // Make oil/industry lines subtle
                     pathElement.setAttribute('stroke-dasharray', '2, 2'); 
