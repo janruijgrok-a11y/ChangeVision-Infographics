@@ -3,330 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Big Tech Paradox</title>
-    <!-- Tailwind CSS CDN for modern styling -->
+    <title>Navigating the AI Revolution</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js for data visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #390840; /* Updated to user's requested purple */
-            color: #ffffff; /* White Text */
+            background-color: #390840; /* Dark Purple */
+            color: #FFFFFF; /* White Text */
         }
-        .chart-container {
+        .container-section {
+            background-color: #4D1B59; /* Mid Purple for sections/cards */
+        }
+        .text-accent-main {
+            color: #F25C05; /* Red-Orange Accent */
+        }
+        .text-accent-light {
+            color: #F28705; /* Dark Orange Accent */
+        }
+        .text-subtle {
+            color: #D9D9D9; /* Subtle text color */
+        }
+        .data-card {
+            background-color: #4D1B59;
+            border-left: 4px solid #F25C05;
+        }
+        .button-link {
+            background-color: #F25C05;
+            transition: background-color 0.3s;
+        }
+        .button-link:hover {
+            background-color: #F28705;
+        }
+
+        /* --- Section 1: Pie Chart & Legend Styles --- */
+        .pie-chart {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
             position: relative;
-            height: 320px;
-            width: 100%;
+            background: conic-gradient(
+                #F25C05 0% 55%,   /* Advertising (Main Red-Orange) */
+                #F28705 55% 85%,   /* Cloud (Dark Orange) */
+                #F2F2F2 85% 95%,   /* Hardware (White/Light Gray) */
+                #D9D9D9 95% 100%  /* Other (Subtle Gray) */
+            );
+        }
+        .legend-item:hover {
+            cursor: pointer;
+            background-color: rgba(242, 92, 5, 0.1); 
+            border-radius: 4px;
+        }
+
+        /* --- Section 2: Bar Chart Styles (Market Cap vs GDP) --- */
+        .chart-container-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
         @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
+            .chart-container-2 {
+                grid-template-columns: 1fr 1fr;
             }
         }
-        .gradient-text {
-            background: linear-gradient(to right, #ffffff, #E5E7EB); /* Adjusted to a lighter gradient for better contrast */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-top: 1rem;
         }
-        .bg-card {
-            background-color: #2e0631; /* A darker shade of purple for cards */
+        .bar {
+            height: 24px;
+            border-radius: 4px;
+            position: relative;
+            transition: width 0.7s ease-out;
+            cursor: default;
         }
-        h2 {
-            color: #ffffff; /* Headings are now white for better contrast */
+        .bar-label {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 0.875rem; /* sm */
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
         }
+
+        /* --- Section 4: Line Chart Styles (Oil vs Data) --- */
+        .line-chart-4 {
+            position: relative;
+            height: 400px; 
+            background: linear-gradient(to top, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 100% 100px; 
+            border-bottom: 2px solid #5C2D6D;
+            padding-bottom: 20px;
+        }
+        .data-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #390840; /* Dark Purple border for pop */
+            z-index: 10;
+            transform: translate(-50%, -50%);
+        }
+        .chart-line {
+            position: absolute;
+            height: 2px;
+            z-index: 5;
+        }
+        .axis-label {
+            position: absolute;
+            bottom: -25px;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* Line colors for Section 4 */
+        .tech-color-1 { background-color: #F25C05; } /* Apple (Red-Orange) */
+        .tech-color-2 { background-color: #F28705; } /* Microsoft (Dark Orange) */
+        .tech-color-3 { background-color: #FFD700; } /* Meta (Gold) */
+        .tech-color-4 { background-color: #A0C4FF; } /* Amazon (Light Blue) */
+        .oil-color-1 { background-color: #4C9F70; } /* ExxonMobil (Green) */
+        .oil-color-2 { background-color: #D36C46; } /* General Electric (Brown-Red) */
+        
     </style>
 </head>
-<body class="bg-[#390840] text-[#ffffff] antialiased">
+<body class="antialiased">
 
-    <div class="container mx-auto px-4 py-12 md:py-20">
+    <!-- Header Section -->
+    <header class="text-center pt-16 pb-12 container-section shadow-xl border-b border-[#5C2D6D]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-black uppercase tracking-widest leading-none">
+                Change<span class="text-accent-main">Vision</span>
+            </h1>
+            <h2 class="text-3xl mt-4 font-light text-subtle">Navigating the AI Revolution</h2>
+            <p class="text-lg mt-6 max-w-2xl mx-auto text-subtle">
+                Theme 1: The fundamental shifts in the economic landscape caused by AI and the impact on technology business models.
+            </p>
+        </div>
+    </header>
 
-        <header class="text-center mb-16 md:mb-24">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider">The Big Tech <span class="gradient-text">Paradox</span></h1>
-            <p class="text-xl md:text-2xl mt-2 text-gray-400">An infographic exploring the scale and influence of major technology companies.</p>
-        </header>
+    <main class="max-w-6xl mx-auto px-4 py-16">
+        
+        <!-- Section 1: The Foundation: Revenue Sources (Interactive) -->
+        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+            <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
+                1. The Foundation: Revenue Sources of Big Tech
+            </h3>
+            <p class="text-subtle mb-10 text-lg">
+                The massive market power of the Big Five (Alphabet, Apple, Meta, Amazon, Microsoft) is rooted in a few dominant revenue streams. Advertising, powered by user data, remains the single largest source.
+            </p>
 
-        <main class="space-y-16 md:space-y-24">
-
-            <!-- Section 1: Introduction -->
-            <section id="revenue-sources">
-                <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">1. The Foundation: Where Does the Money Come From?</h2>
-                    <p class="text-gray-300 text-lg">
-                        For years, the business model of tech giants was built on three pillars: targeted advertising, cloud computing, and hardware. But the dominance of one pillar is undeniable. This is the foundation that is now under pressure.
-                    </p>
-                </div>
-                <div class="bg-card p-4 md:p-8 rounded-lg shadow-2xl">
-                    <h3 class="text-xl font-bold text-center mb-6">Revenue Sources of Big Tech</h3>
-                    <div class="chart-container max-w-md mx-auto">
-                        <canvas id="revenueSourcesChart"></canvas>
-                    </div>
-                    <div class="mt-6 text-center text-gray-400">
-                        <p class="text-sm">A simplified representation of the average business model. The focus on advertising is the Achilles' heel in an AI-driven world.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 2: Comparison (Updated with new countries and style) -->
-            <section id="global-giants" class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <div class="order-2 lg:order-1">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">2. Mighty Entities: Bigger Than Countries</h2>
-                    <p class="text-gray-300 mb-6 text-lg">
-                        The economic scale of the largest tech companies is so gigantic that their annual revenue surpasses that of national economies. Their influence thus extends far beyond traditional markets.
-                    </p>
-                </div>
-                <div class="order-1 lg:order-2 bg-card p-4 md:p-8 rounded-lg shadow-2xl">
-                    <h3 class="text-xl font-bold text-center mb-6">Revenue vs. Gross Domestic Product (GDP)</h3>
-                    <div class="chart-container max-w-2xl mx-auto">
-                        <canvas id="gdpComparisonChart"></canvas>
-                    </div>
-                    <div class="mt-6 text-center text-gray-400">
-                        <p class="text-sm">A comparison of the annual revenue of tech giants with the GDPs of countries.</p>
+            <div class="flex flex-col md:flex-row items-start justify-between gap-10">
+                
+                <!-- Pie Chart Visualization and Dynamic Info Box -->
+                <div class="flex flex-col items-center w-full md:w-auto md:flex-shrink-0">
+                    <div class="pie-chart shadow-2xl border-4 border-white mx-auto"></div>
+                    
+                    <div id="dynamic-info-box" class="mt-8 p-4 bg-[#5C2D6D] rounded-lg border-l-4 border-accent-main w-full max-w-[250px] transition-all duration-300">
+                        <h4 class="font-bold text-accent-light mb-1" id="info-title">Hover over the legend...</h4>
+                        <p class="text-sm text-subtle" id="info-description">
+                            Move your cursor over an item in the legend to see its strategic importance to Big Tech.
+                        </p>
                     </div>
                 </div>
-            </section>
 
-            <!-- Section 3: Shift from old to new giants -->
-            <section id="market-dominance-shift">
-                <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">3. The Great Shift: From Oil to Data</h2>
-                    <p class="text-gray-300 text-lg">
-                        Over the past two decades, the world has witnessed a fundamental shift in economic power. Traditional giants, represented by companies like General Electric and ExxonMobil, have lost their top positions to the rising tech giants. The value of data and network effects now outweighs the value of physical resources.
-                    </p>
-                </div>
-                <div class="bg-card p-4 md:p-8 rounded-lg shadow-2xl">
-                    <h3 class="text-xl font-bold text-center mb-6">Market Capitalization Over Time (in billion USD)</h3>
-                    <div class="chart-container max-w-2xl mx-auto">
-                        <canvas id="marketDominanceChart"></canvas>
+                <!-- Legend / Key Data -->
+                <div class="flex-grow max-w-lg">
+                    <h4 class="text-2xl font-bold mb-4 text-accent-main">Dominant Revenue Breakdown (Illustrative)</h4>
+                    <div class="space-y-2">
+                        
+                        <!-- Legend Item: Ads -->
+                        <div class="legend-item p-2" 
+                             onmouseover="updateInfo('Advertising / Data Monetization', 'The core revenue stream, highly vulnerable to AI answer models. Source of massive user data accumulation.')" 
+                             onmouseout="resetInfo()">
+                            <div class="flex justify-between items-center pb-1 border-b border-[#5C2D6D]">
+                                <div class="flex items-center">
+                                    <span class="w-4 h-4 rounded-full mr-3 bg-[#F25C05]"></span>
+                                    <span class="font-semibold">Advertising / Data Monetization</span>
+                                </div>
+                                <span class="text-xl font-extrabold">55%</span>
+                            </div>
+                        </div>
+
+                        <!-- Legend Item: Cloud -->
+                        <div class="legend-item p-2" 
+                             onmouseover="updateInfo('Cloud Services', 'High-margin, rapidly growing segment. Provides the computing power for the AI boom itself, making it a critical strategic asset.')" 
+                             onmouseout="resetInfo()">
+                            <div class="flex justify-between items-center pb-1 border-b border-[#5C2D6D]">
+                                <div class="flex items-center">
+                                    <span class="w-4 h-4 rounded-full mr-3 bg-[#F28705]"></span>
+                                    <span class="font-semibold">Cloud Services (e.g., Azure, AWS, GCP)</span>
+                                </div>
+                                <span class="text-xl font-extrabold">30%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Legend Item: Hardware -->
+                        <div class="legend-item p-2" 
+                             onmouseover="updateInfo('Hardware Sales', 'Stable income from device ecosystems (e.g., iPhone). Less directly affected by AI content changes than advertising.')" 
+                             onmouseout="resetInfo()">
+                            <div class="flex justify-between items-center pb-1 border-b border-[#5C2D6D]">
+                                <div class="flex items-center">
+                                    <span class="w-4 h-4 rounded-full mr-3 bg-white"></span>
+                                    <span class="font-semibold">Hardware Sales / Services (e.g., Apple)</span>
+                                </div>
+                                <span class="text-xl font-extrabold">10%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Legend Item: Other -->
+                        <div class="legend-item p-2" 
+                             onmouseover="updateInfo('Other Ventures', 'Emerging ventures, subscriptions, and minor software licenses. The investment hub for future growth.')" 
+                             onmouseout="resetInfo()">
+                            <div class="flex justify-between items-center pb-1">
+                                <div class="flex items-center">
+                                    <span class="w-4 h-4 rounded-full mr-3 bg-[#D9D9D9]"></span>
+                                    <span class="font-semibold">Other Ventures / Software</span>
+                                </div>
+                                <span class="text-xl font-extrabold">5%</span>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Section 4: The new playbook -->
-            <section id="strategic-shift">
-                <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">4. The New Playbook: Retaining Power</h2>
-                    <p class="text-gray-300 text-lg">
-                        The Big Five Tech companies are not passive. They are adapting their strategy to maintain their dominance in the AI era, with a focus on new business models, data centralization, and strategic acquisitions.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-card p-6 rounded-lg shadow-2xl flex flex-col items-center text-center">
-                        <p class="text-5xl mb-4">🚀</p>
-                        <h3 class="font-bold text-xl text-[#6D28D9] mb-2">From 'Platform' to 'Agent'</h3>
-                        <p class="text-gray-400">Shifting from open search platforms to closed AI agents that directly deliver and manage information.</p>
-                    </div>
-                    <div class="bg-card p-6 rounded-lg shadow-2xl flex flex-col items-center text-center">
-                        <p class="text-5xl mb-4">🏰</p>
-                        <h3 class="font-bold text-xl text-[#6D28D9] mb-2">Strengthening the 'Data Moats'</h3>
-                        <p class="text-gray-400">Collecting and defending unprecedented amounts of data to train their AI models and exclude competitors.</p>
-                    </div>
-                    <div class="bg-card p-6 rounded-lg shadow-2xl flex flex-col items-center text-center">
-                        <p class="text-5xl mb-4">🔗</p>
-                        <h3 class="font-bold text-xl text-[#6D28D9] mb-2">Vertical Integration</h3>
-                        <p class="text-gray-400">Controlling the entire value chain: from hardware (chips) to software (models) and the user interface (apps).</p>
+        <!-- Section 2: Mighty Entities: Market Value vs. GDP (Interactive Bar Chart) -->
+        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+            <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
+                2. Mighty Entities: Market Value vs. GDP
+            </h3>
+            <p class="text-subtle mb-12 text-lg">
+                The **Market Capitalization** of leading tech companies now rivals the entire **Gross Domestic Product (GDP)** of major national economies, demonstrating their immense financial leverage.
+            </p>
+
+            <div class="chart-container-2">
+                
+                <!-- Left Column: Tech Market Caps (Bars: Red-Orange) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-accent-main">Big Tech Market Value (Trillions USD)</h4>
+                    <div class="bar-wrapper" id="tech-bars">
+                        <!-- Bars will be generated by JS -->
                     </div>
                 </div>
-            </section>
 
-        </main>
+                <!-- Right Column: National GDPs (Bars: Orange) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-accent-light">Selected National GDPs (Trillions USD)</h4>
+                    <div class="bar-wrapper" id="gdp-bars">
+                        <!-- Bars will be generated by JS -->
+                    </div>
+                </div>
+            </div>
 
-        <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-800">
-            <h3 class="text-2xl font-bold">The discussion continues...</h3>
-            <p class="text-gray-400 mt-2 max-w-2xl mx-auto">This is just the beginning. Join the ChangeVision group on LinkedIn to explore, experience, and shape the future together.</p>
-            <a href="#" class="mt-6 inline-block bg-white text-[#0D0D0D] font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-gray-300 transition-colors" target="_blank">
-                Join the Discussion
+            <p class="mt-10 text-xl font-extrabold text-center text-accent-main">
+                The largest tech companies possess a financial valuation that dwarfs the annual economic output of major G7 nations.
+            </p>
+        </section>
+
+
+        <!-- Section 3: Death of the Search Engine (Renumbered) -->
+        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+            <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
+                3. Death of the Search Engine
+            </h3>
+            <p class="text-subtle mb-6 text-lg">
+                The massive advertising model, fuelled by search behavior, faces an existential threat. Generative AI fundamentally changes how users consume information.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Old Model Card -->
+                <div class="data-card p-6 rounded-lg border-l-4 border-accent-light">
+                    <h4 class="text-2xl font-bold mb-3 text-accent-main">The Old Model: Links & Ads</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-subtle">
+                        <li>**Query:** User asks question in search engine.</li>
+                        <li>**Result:** Links to external websites.</li>
+                        <li>**Monetization:** Ads displayed alongside links.</li>
+                        <li>**Power:** Control over the information gateway (Google is the gatekeeper).</li>
+                    </ul>
+                </div>
+                <!-- New Model Card -->
+                <div class="data-card p-6 rounded-lg border-l-4 border-accent-light">
+                    <h4 class="text-2xl font-bold mb-3 text-accent-main">The New Model: AI & Answers</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-subtle">
+                        <li>**Query:** User asks question to AI assistant.</li>
+                        <li>**Result:** Direct, summarized answer without external links.</li>
+                        <li>**Monetization:** Subscriptions and licenses for AI models.</li>
+                        <li>**Power:** Control over knowledge itself (AI delivers the final product).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="mt-8 text-lg font-medium text-center text-accent-light">
+                *The shift from 'links' to 'answers' constitutes an existential risk to the $200 billion advertising paradigm.*
+            </p>
+        </section>
+
+        <!-- Section 4: The Great Shift: From Oil to Data (Line Chart) -->
+        <section class="mb-20 container-section p-8 md:p-12 rounded-xl shadow-2xl">
+            <h3 class="text-3xl md:text-4xl font-extrabold mb-8 text-white border-b-2 border-accent-main pb-2">
+                4. The Great Shift: From Oil to Data
+            </h3>
+            <p class="text-subtle mb-8 text-lg">
+                The battle for market dominance has shifted from controlling physical resources (Oil, Industry) to controlling cognitive resources (Data, AI). This visualization illustrates the divergence in market capitalization over two decades.
+            </p>
+
+            <!-- Line Chart Visualization -->
+            <div class="relative pt-6 pb-12">
+                <!-- Y-Axis Labels (Illustrative) -->
+                <div class="absolute inset-y-0 left-0 flex flex-col justify-between text-right pr-4 text-subtle text-sm" style="height: 380px;">
+                    <span>$3.5T</span>
+                    <span class="text-accent-main font-bold">The AI Apex</span>
+                    <span>$2.5T</span>
+                    <span>$1.5T</span>
+                    <span>$0.5T</span>
+                    <span>$0</span>
+                </div>
+
+                <!-- Chart Area -->
+                <div class="line-chart-4 ml-16">
+                    <!-- Lines and Data Points will be generated by JS -->
+                    
+                    <!-- X-Axis Labels -->
+                    <span class="axis-label left-0" style="left: 0%;">2005</span>
+                    <span class="axis-label" style="left: 50%;">2015</span>
+                    <span class="axis-label right-0" style="right: 0%;">2025</span>
+                </div>
+            </div>
+
+            <!-- Chart Legend -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mt-8">
+                <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 tech-color-1"></span> Apple</span>
+                <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 tech-color-2"></span> Microsoft</span>
+                <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 text-white bg-[#FFD700]"></span> Meta</span>
+                <span class="flex items-center text-sm font-semibold"><span class="w-3 h-3 rounded-full mr-2 text-white bg-[#A0C4FF]"></span> Amazon</span>
+                <span class="flex items-center text-sm font-semibold text-gray-300"><span class="w-3 h-3 rounded-full mr-2 oil-color-1"></span> ExxonMobil</span>
+                <span class="flex items-center text-sm font-semibold text-gray-300"><span class="w-3 h-3 rounded-full mr-2 oil-color-2"></span> General Electric</span>
+            </div>
+
+            <p class="mt-10 text-xl font-extrabold text-center text-accent-main">
+                The exponential growth of the Data Giants marks a fundamental economic transition, leaving the value of Industrial Giants far behind.
+            </p>
+        </section>
+
+        <!-- Call to Action Footer -->
+        <footer class="text-center pt-10 pb-4">
+            <h4 class="text-3xl font-extrabold text-accent-light mb-4">Share Your Vision</h4>
+            <p class="text-lg text-subtle mb-6 max-w-2xl mx-auto">
+                How should governments and civil society respond to this concentration of data-driven power?
+            </p>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:6950777640140091392" target="_blank" class="button-link inline-block px-10 py-4 text-xl font-bold text-white rounded-full shadow-lg transform transition duration-300 hover:scale-105">
+                Join the Discussion &rarr;
             </a>
         </footer>
-
-    </div>
-
+    </main>
+    
     <script>
-        // Function to style tooltips
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            }
-            return label;
+        // --- Section 1: Pie Chart Dynamic Info ---
+        const infoTitle = document.getElementById('info-title');
+        const infoDescription = document.getElementById('info-description');
+        
+        const initialTitle = 'Hover over the legend...';
+        const initialDescription = 'Move your cursor over an item in the legend to see its strategic importance to Big Tech.';
+
+        function updateInfo(title, description) {
+            infoTitle.textContent = title;
+            infoDescription.textContent = description;
+        }
+
+        function resetInfo() {
+            infoTitle.textContent = initialTitle;
+            infoDescription.textContent = initialDescription;
+        }
+        
+        // --- Section 2: Bar Chart Generation (Market Cap vs GDP) ---
+        const dataSection2 = {
+            tech: [
+                { name: 'Microsoft', value: 3.3, color: '#F25C05', label: '$3.3T' },
+                { name: 'Apple', value: 3.0, color: '#F25C05', label: '$3.0T' },
+                { name: 'Alphabet (Google)', value: 2.2, color: '#F25C05', label: '$2.2T' },
+                { name: 'Amazon', value: 2.0, color: '#F25C05', label: '$2.0T' },
+            ],
+            gdp: [
+                { name: 'Germany', value: 4.5, color: '#F28705', label: '$4.5T' },
+                { name: 'United Kingdom', value: 3.5, color: '#F28705', label: '$3.5T' },
+                { name: 'India', value: 3.7, color: '#F28705', label: '$3.7T' },
+                { name: 'France', value: 3.1, color: '#F28705', label: '$3.1T' },
+            ]
         };
 
-        // Colors for the charts
-        const chartColors = {
-            purple: '#6D28D9',
-            lightPurple: '#4C1D95',
-            red: '#D92B04',
-            white: 'rgba(242, 242, 242, 0.8)',
-            grid: 'rgba(242, 242, 242, 0.1)',
-            techBar: '#8B5CF6', // A bright purple for tech companies
-            countryBar: '#E5E7EB', // A light grey for countries
+        function renderBarChart(data, containerId, max) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            data.forEach(item => {
+                // Max value is 4.5T (Germany GDP)
+                const percentage = (item.value / max) * 100;
+
+                const barDiv = document.createElement('div');
+                barDiv.className = 'flex items-center';
+                barDiv.innerHTML = `
+                    <div class="w-1/3 text-sm font-medium text-white">${item.name}</div>
+                    <div class="w-2/3 ml-4 relative">
+                        <div 
+                            class="bar shadow-md" 
+                            style="width: ${percentage.toFixed(0)}%; background-color: ${item.color};"
+                            title="${item.name}: ${item.label}">
+                            <span class="bar-label">${item.label}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(barDiv);
+            });
+        }
+
+        // --- Section 4: Line Chart Generation (Oil vs Data) ---
+        // Data points are normalized to a 0-100% vertical scale (0T = 0%, 3.5T = 100%)
+        const maxMarketCap = 3.5; 
+        const chartHeight = 400; // Matches CSS height
+        
+        // Structure: { value: MarketCap in T, y: Normalized Y position (0-100) }
+        const dataSection4 = [
+            { name: 'Apple', color: '#F25C05', points: [
+                { year: 2005, value: 0.01 }, // ~0%
+                { year: 2015, value: 0.70 }, // ~20%
+                { year: 2025, value: 3.30 }, // ~94%
+            ]},
+            { name: 'Microsoft', color: '#F28705', points: [
+                { year: 2005, value: 0.25 }, // ~7%
+                { year: 2015, value: 0.40 }, // ~11%
+                { year: 2025, value: 3.50 }, // ~100%
+            ]},
+            { name: 'Meta', color: '#FFD700', points: [
+                { year: 2005, value: 0.00 }, // ~0%
+                { year: 2015, value: 0.30 }, // ~9%
+                { year: 2025, value: 2.20 }, // ~63%
+            ]},
+            { name: 'Amazon', color: '#A0C4FF', points: [
+                { year: 2005, value: 0.01 }, // ~0%
+                { year: 2015, value: 0.35 }, // ~10%
+                { year: 2025, value: 2.50 }, // ~71%
+            ]},
+            { name: 'ExxonMobil', color: '#4C9F70', points: [
+                { year: 2005, value: 0.35 }, // ~10%
+                { year: 2015, value: 0.30 }, // ~9%
+                { year: 2025, value: 0.50 }, // ~14%
+            ]},
+            { name: 'General Electric', color: '#D36C46', points: [
+                { year: 2005, value: 0.30 }, // ~9%
+                { year: 2015, value: 0.25 }, // ~7%
+                { year: 2025, value: 0.20 }, // ~6%
+            ]},
+        ];
+
+        function getNormalizedY(value) {
+            // Converts T value to percentage of maxMarketCap, then flips for CSS positioning (0% is top)
+            const percentage = (value / maxMarketCap) * 100;
+            return 100 - percentage;
+        }
+
+        function renderLineChart() {
+            const chartContainer = document.querySelector('.line-chart-4');
+            if (!chartContainer) return;
+
+            // Helper to get X position based on year (MOVED TO THE OUTER SCOPE OF renderLineChart)
+            const getX = (year) => {
+                if (year === 2005) return '0%';
+                if (year === 2015) return '50%';
+                if (year === 2025) return '100%';
+                return '0%';
+            };
+
+            const years = [2005, 2015, 2025];
+            
+            // Loop through each company
+            dataSection4.forEach(company => {
+                const points = company.points;
+                
+                // Draw Lines between points (simplified/illustrative)
+                for (let i = 0; i < points.length - 1; i++) {
+                    const p1 = points[i];
+                    const p2 = points[i+1];
+                    
+                    const x1 = parseFloat(getX(p1.year));
+                    const y1 = getNormalizedY(p1.value);
+                    const x2 = parseFloat(getX(p2.year));
+                    const y2 = getNormalizedY(p2.value);
+                    
+                    // Simple line drawing using div rotation and translation
+                    const dx = x2 - x1;
+                    const dy = y2 - y1;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+                    const lineDiv = document.createElement('div');
+                    lineDiv.className = 'chart-line';
+                    lineDiv.style.backgroundColor = company.color;
+                    lineDiv.style.left = getX(p1.year);
+                    lineDiv.style.top = `${y1}%`;
+                    lineDiv.style.width = `${distance * 0.95}%`; // Fudge factor to meet the point
+                    lineDiv.style.transform = `translateY(-50%) rotate(${angle}deg)`;
+                    lineDiv.style.transformOrigin = '0 0';
+
+                    // Note: The simplified CSS method is highly inaccurate. We'll stick to displaying points 
+                    // and relying on visual perception of the trend, as the complex rotation/scaling 
+                    // is not reliably possible with simple divs and percentages.
+                    
+                    if (Math.abs(dx) > 0.01) {
+                        // Keep the original logic block clean
+                    }
+                }
+
+                // Draw Data Points
+                points.forEach((point, index) => {
+                    const pointDiv = document.createElement('div');
+                    let topPosition = getNormalizedY(point.value);
+                    
+                    // Ensure the highest point in 2025 for MSFT is exactly at the top (100% of height)
+                    if (company.name === 'Microsoft' && point.year === 2025) {
+                        topPosition = 0; 
+                    }
+                    // Ensure the lowest points are visible (don't fall off the bottom)
+                    if (topPosition > 95) {
+                        topPosition = 95;
+                    }
+
+
+                    pointDiv.className = `data-point shadow-lg hover:z-20 transition duration-300`;
+                    pointDiv.style.backgroundColor = company.color;
+                    pointDiv.style.left = getX(point.year);
+                    pointDiv.style.top = `${topPosition}%`;
+                    pointDiv.title = `${company.name} (${point.year}): $${point.value.toFixed(2)}T`;
+                    
+                    // Add text label only for the final year 2025
+                    if (point.year === 2025) {
+                        const labelDiv = document.createElement('div');
+                        labelDiv.className = 'absolute text-xs font-bold whitespace-nowrap';
+                        labelDiv.style.color = company.color;
+                        labelDiv.style.left = '100%'; 
+                        labelDiv.style.top = `0%`;
+                        labelDiv.style.transform = `translate(10px, -50%)`;
+                        labelDiv.textContent = `${company.name}`;
+                        pointDiv.appendChild(labelDiv);
+                        // Add value for the final year
+                        const valueDiv = document.createElement('div');
+                        valueDiv.className = 'absolute text-xs font-normal whitespace-nowrap text-subtle';
+                        valueDiv.style.left = '100%'; 
+                        valueDiv.style.top = `0%`;
+                        valueDiv.style.transform = `translate(10px, 10px)`;
+                        valueDiv.textContent = `$${point.value.toFixed(1)}T`;
+                        pointDiv.appendChild(valueDiv);
+                    }
+                    
+                    chartContainer.appendChild(pointDiv);
+                });
+            });
+
+            // Re-render to connect points via visual lines 
+            // This is a simple visual connector. It's not mathematically accurate but conveys the trend.
+            let paths = [];
+            dataSection4.forEach(company => {
+                const points = company.points.map(p => ({
+                    x: parseFloat(getX(p.year)),
+                    y: getNormalizedY(p.value)
+                }));
+                
+                paths.push({company: company.name, color: company.color, points: points});
+            });
+
+            // Use SVG for robust line drawing
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute('width', '100%');
+            svg.setAttribute('height', '100%');
+            svg.setAttribute('viewBox', '0 0 100 100');
+            svg.setAttribute('preserveAspectRatio', 'none');
+            svg.style.position = 'absolute';
+            svg.style.top = '0';
+            svg.style.left = '0';
+            svg.style.overflow = 'visible';
+
+            paths.forEach(pathData => {
+                let pathString = 'M';
+                pathData.points.forEach(p => {
+                    // Convert % to 0-100 viewbox coordinates
+                    pathString += ` ${p.x} ${p.y}`;
+                });
+
+                const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                pathElement.setAttribute('d', pathString);
+                pathElement.setAttribute('stroke', pathData.color);
+                pathElement.setAttribute('stroke-width', '0.5'); // Relative to 100x100 viewbox
+                pathElement.setAttribute('fill', 'none');
+                
+                // Add class for Tech vs Oil visibility
+                const isTech = ['Apple', 'Microsoft', 'Meta', 'Amazon'].includes(pathData.company);
+                if (!isTech) {
+                    // Make oil/industry lines subtle
+                    pathElement.setAttribute('stroke-dasharray', '2, 2'); 
+                    pathElement.setAttribute('stroke-opacity', '0.7'); 
+                }
+
+                svg.appendChild(pathElement);
+            });
+
+            chartContainer.prepend(svg);
+        }
+
+        // --- Initialization ---
+        window.onload = function() {
+            resetInfo();
+            // Section 2 Initialization (Max value for scaling is 4.5T)
+            renderBarChart(dataSection2.tech, 'tech-bars', 4.5);
+            renderBarChart(dataSection2.gdp, 'gdp-bars', 4.5);
+
+            // Section 4 Initialization
+            renderLineChart();
         };
-
-        // Default options for all charts
-        const defaultChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: chartColors.white,
-                        font: {
-                            family: "'Inter', sans-serif"
-                        }
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        title: tooltipTitleCallback
-                    },
-                    backgroundColor: '#0D0D0D',
-                    titleFont: { size: 14, family: "'Inter', sans-serif" },
-                    bodyFont: { size: 12, family: "'Inter', sans-serif" },
-                    padding: 10,
-                    cornerRadius: 4,
-                    displayColors: true,
-                    borderColor: chartColors.purple,
-                    borderWidth: 1
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { color: chartColors.white, font: { family: "'Inter', sans-serif" } },
-                    grid: { color: chartColors.grid }
-                },
-                y: {
-                    ticks: { color: chartColors.white, font: { family: "'Inter', sans-serif" } },
-                    grid: { color: chartColors.grid }
-                }
-            }
-        };
-
-        // Chart 1: Revenue Sources (Doughnut chart)
-        const revenueSourcesCtx = document.getElementById('revenueSourcesChart').getContext('2d');
-        new Chart(revenueSourcesCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Targeted Ads', 'Cloud Computing', 'Hardware & Subscriptions'],
-                datasets: [{
-                    label: 'Business Model',
-                    data: [65, 25, 10],
-                    backgroundColor: [chartColors.techBar, chartColors.lightPurple, chartColors.red],
-                    borderColor: '#2e0631',
-                    borderWidth: 4
-                }]
-            },
-            options: { ...defaultChartOptions, scales: { x: { display: false }, y: { display: false } } }
-        });
-
-        // Chart 2: Revenue vs. GDP (Bar chart)
-        const gdpComparisonCtx = document.getElementById('gdpComparisonChart').getContext('2d');
-        new Chart(gdpComparisonCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Apple', 'Microsoft', 'Alphabet (Google)', 'Amazon', 'Meta', 'Netherlands', 'Austria'],
-                datasets: [
-                    {
-                        label: 'Revenue / GDP (in billion USD)',
-                        data: [383.3, 211.9, 282.8, 513.98, 117.9, 1154.36, 511.69],
-                        backgroundColor: [
-                            chartColors.techBar,
-                            chartColors.techBar,
-                            chartColors.techBar,
-                            chartColors.techBar,
-                            chartColors.techBar,
-                            chartColors.countryBar,
-                            chartColors.countryBar
-                        ],
-                        borderRadius: 4,
-                        barPercentage: 0.6,
-                        categoryPercentage: 0.6
-                    }
-                ]
-            },
-            options: {
-                ...defaultChartOptions,
-                indexAxis: 'y',
-                scales: {
-                    x: {
-                        ticks: { color: chartColors.white },
-                        grid: { color: chartColors.grid }
-                    },
-                    y: {
-                        ticks: { color: chartColors.white, font: { family: "'Inter', sans-serif" } },
-                        grid: { display: false }
-                    }
-                }
-            }
-        });
-
-        // Chart 3: Market Dominance over Time (Line chart)
-        const marketDominanceCtx = document.getElementById('marketDominanceChart').getContext('2d');
-        new Chart(marketDominanceCtx, {
-            type: 'line',
-            data: {
-                labels: ['2005', '2010', '2015', '2020', '2025'],
-                datasets: [{
-                    label: 'Apple',
-                    data: [20, 200, 740, 2255, 3462], // Data in billion USD
-                    borderColor: chartColors.techBar,
-                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 5
-                }, {
-                    label: 'Microsoft',
-                    data: [263, 228, 340, 1500, 3869], // Data in billion USD
-                    borderColor: chartColors.lightPurple,
-                    backgroundColor: 'rgba(76, 29, 149, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 5
-                }, {
-                    label: 'ExxonMobil',
-                    data: [350, 400, 300, 180, 458], // Data in billion USD
-                    borderColor: '#607D8B',
-                    backgroundColor: 'rgba(96, 125, 139, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 5
-                }, {
-                    label: 'General Electric',
-                    data: [400, 170, 260, 60, 285], // Data in billion USD
-                    borderColor: '#9E9E9E',
-                    backgroundColor: 'rgba(158, 158, 158, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 5
-                }]
-            },
-            options: {
-                ...defaultChartOptions,
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Year',
-                            color: chartColors.white,
-                            font: { family: "'Inter', sans-serif", size: 14 }
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Market Cap (in bln. USD)',
-                            color: chartColors.white,
-                            font: { family: "'Inter', sans-serif", size: 14 }
-                        }
-                    }
-                }
-            }
-        });
     </script>
 </body>
 </html>
-
-
