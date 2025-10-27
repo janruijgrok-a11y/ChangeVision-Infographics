@@ -1,2 +1,2 @@
 # ChangeVision AI Game Changers
-Various themes for ChangeVision, Buitenkamer and Virtual Nation State
+Various themes for discussions within ChangeVision and other platforms about AI Gamechangers.
