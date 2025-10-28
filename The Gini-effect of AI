@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gini Effect of AI</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #390840; /* ChangeVision purple */
+            color: #ffffff; /* White text for contrast */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #E5E7EB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-card {
+            background-color: #2e0631; /* A darker purple for card backgrounds */
+        }
+        h2 {
+            color: #ffffff; /* White headings for better contrast */
+        }
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#390840] text-[#ffffff] antialiased">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <header class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider">The Gini Effect of <span class="gradient-text">AI</span></h1>
+            <p class="text-xl md:text-2xl mt-2 text-gray-400">Examining the past, present, and future of economic inequality.</p>
+        </header>
+
+        <main class="space-y-16 md:space-y-24">
+
+            <!-- Section 1: Historical Perspective -->
+            <section id="historical-perspective">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">1. The Past: 100 Years of Inequality</h2>
+                    <p class="text-gray-300 text-lg">
+                        The Gini coefficient is a key measure of income inequality. A value of 0 represents perfect equality, while a value of 100 indicates perfect inequality. The following chart illustrates the historical fluctuations of the Gini coefficient over the last century, revealing patterns driven by economic shifts, wars, and technological change.
+                    </p>
+                </div>
+                <div class="bg-card p-4 md:p-8 rounded-lg shadow-2xl">
+                    <h3 class="text-xl font-bold text-center mb-6">Historical Gini Coefficient (1920-2020)</h3>
+                    <div class="chart-container max-w-2xl mx-auto">
+                        <canvas id="historicalGiniChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Future Scenarios -->
+            <section id="future-scenarios">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">2. The Future: AI and the Great Divide</h2>
+                    <p class="text-gray-300 text-lg">
+                        As AI becomes more integrated into our economy, many foresee a widening wealth gap. However, there are also ideas and movements that could serve as a counterforce, such as <span class="font-bold text-white">Limitarianism</span>, which proposes a cap on wealth accumulation to address extreme inequality. The following chart visualizes three possible scenarios for the future.
+                    </p>
+                </div>
+                <div class="bg-card p-4 md:p-8 rounded-lg shadow-2xl">
+                    <h3 class="text-xl font-bold text-center mb-6">Possible Future Scenarios (2020-2050)</h3>
+                    <div class="chart-container max-w-2xl mx-auto mb-8">
+                        <canvas id="futureGiniChart"></canvas>
+                    </div>
+                    <!-- New section for displaying scenario descriptions -->
+                    <div id="scenario-description-box" class="p-6 rounded-lg bg-[#240626] text-center">
+                        <p id="scenario-text" class="text-gray-400">
+                            Click on a scenario name in the chart legend to learn more about each future.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-800">
+            <h3 class="text-2xl font-bold">The discussion continues...</h3>
+            <p class="text-gray-400 mt-2 max-w-2xl mx-auto">This infographic is a starting point. Join the ChangeVision group to explore these topics further and shape our collective future.</p>
+            <a href="#" class="mt-6 inline-block bg-white text-[#0D0D0D] font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-gray-300 transition-colors" target="_blank">
+                Join the Discussion
+            </a>
+        </footer>
+
+    </div>
+
+    <script>
+        // Colors for the charts and text
+        const chartColors = {
+            purple: '#6D28D9',
+            lightPurple: '#4C1D95',
+            techBar: '#8B5CF6',
+            white: 'rgba(242, 242, 242, 0.8)',
+            grid: 'rgba(242, 242, 242, 0.1)',
+            // Scenario-specific colors
+            scenario1: '#D92B04', // Red for divergence
+            scenario2: '#34D399', // Green for balance
+            scenario3: '#FBBF24', // Yellow for balanced growth
+        };
+
+        // Scenario descriptions mapping
+        const scenarioDescriptions = {
+            'Scenario 1: The Great Divergence': 'In this scenario, AI drives exponential growth, but the benefits are concentrated in the hands of a few. Automation displaces vast numbers of jobs, and the lack of social safety nets leads to a sharp increase in economic inequality. The Gini coefficient rises dramatically as a small elite controls the core AI infrastructure.',
+            'Scenario 2: The Age of Limitarianism': 'This scenario envisions a world where ethical and political movements, such as Limitarianism, gain traction. New laws cap extreme wealth and redistribute resources, potentially through universal basic income or public ownership of AI. This counter-force to technological inequality leads to a significant decrease in the Gini coefficient.',
+            'Scenario 3: Balanced Growth': 'Here, AI adoption is managed to ensure broader societal benefits. Governments invest in education and retraining programs to adapt the workforce, while a competitive market prevents tech monopolies. Inequality remains relatively stable, with the Gini coefficient fluctuating but not growing to extremes. The benefits of AI are distributed more broadly across the population.'
+        };
+        
+        // Function to update the description box
+        const updateDescription = (label) => {
+            const description = scenarioDescriptions[label] || 'Click on a scenario name in the chart legend or on a point on the line to learn more about each future.';
+            document.getElementById('scenario-text').innerHTML = description;
+        };
+
+        // Default options for all charts
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: chartColors.white,
+                        font: { family: "'Inter', sans-serif" }
+                    },
+                    // Add interactivity to the legend
+                    onClick: (evt, legendItem, legend) => {
+                        const label = legendItem.text;
+                        updateDescription(label);
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#0D0D0D',
+                    titleFont: { size: 14, family: "'Inter', sans-serif" },
+                    bodyFont: { size: 12, family: "'Inter', sans-serif" },
+                    padding: 10,
+                    cornerRadius: 4,
+                    displayColors: true,
+                    borderColor: chartColors.purple,
+                    borderWidth: 1
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: chartColors.white, font: { family: "'Inter', sans-serif" } },
+                    grid: { color: chartColors.grid }
+                },
+                y: {
+                    ticks: { color: chartColors.white, font: { family: "'Inter', sans-serif" } },
+                    grid: { color: chartColors.grid },
+                    beginAtZero: false,
+                }
+            }
+        };
+
+        // Chart 1: Historical Gini Coefficient
+        const historicalGiniCtx = document.getElementById('historicalGiniChart').getContext('2d');
+        new Chart(historicalGiniCtx, {
+            type: 'line',
+            data: {
+                labels: ['1920', '1930', '1940', '1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020'],
+                datasets: [{
+                    label: 'Gini Coefficient (U.S.)',
+                    // Fictional, but plausible data
+                    data: [45, 40, 35, 33, 31, 35, 41, 44, 46, 48, 50],
+                    borderColor: chartColors.techBar,
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            color: chartColors.white,
+                            font: { family: "'Inter', sans-serif", size: 14 }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Gini Coefficient (0-100)',
+                            color: chartColors.white,
+                            font: { family: "'Inter', sans-serif", size: 14 }
+                        },
+                        beginAtZero: true,
+                        max: 60,
+                        min: 30
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Future Scenarios
+        const futureGiniCtx = document.getElementById('futureGiniChart').getContext('2d');
+        const futureGiniChart = new Chart(futureGiniCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2025', '2030', '2035', '2040', '2045', '2050'],
+                datasets: [
+                    {
+                        label: 'Scenario 1: The Great Divergence',
+                        data: [50, 55, 60, 65, 70, 75, 80],
+                        borderColor: chartColors.scenario1,
+                        backgroundColor: 'rgba(217, 43, 4, 0.2)',
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 5
+                    },
+                    {
+                        label: 'Scenario 2: The Age of Limitarianism',
+                        data: [50, 48, 45, 42, 40, 38, 35],
+                        borderColor: chartColors.scenario2,
+                        backgroundColor: 'rgba(52, 211, 153, 0.2)',
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 5
+                    },
+                    {
+                        label: 'Scenario 3: Balanced Growth',
+                        data: [50, 51, 52, 53, 52, 51, 50],
+                        borderColor: chartColors.scenario3,
+                        backgroundColor: 'rgba(251, 191, 36, 0.2)',
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 5
+                    }
+                ]
+            },
+            options: {
+                ...defaultChartOptions,
+                // New onClick handler for the chart itself
+                onClick: (evt, elements) => {
+                    if (elements.length > 0) {
+                        const firstElement = elements[0];
+                        const index = firstElement.datasetIndex;
+                        const label = futureGiniChart.data.datasets[index].label;
+                        updateDescription(label);
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            color: chartColors.white,
+                            font: { family: "'Inter', sans-serif", size: 14 }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Gini Coefficient (0-100)',
+                            color: chartColors.white,
+                            font: { family: "'Inter', sans-serif", size: 14 }
+                        },
+                        beginAtZero: true,
+                        max: 100,
+                        min: 30
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
