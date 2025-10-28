@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Impact of AI for Work</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- D3.js for data visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #390840; /* Updated to user's requested purple */
+            color: #ffffff; /* White Text */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #E5E7EB); /* Adjusted to a lighter gradient for better contrast */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-card {
+            background-color: #2e0631; /* A darker shade of purple for cards */
+        }
+        h2 {
+            color: #ffffff; /* Headings are now white for better contrast */
+        }
+        /* Custom CSS for the SVG/D3 chart */
+        .bar {
+            cursor: pointer;
+            transition: fill 0.3s ease;
+        }
+        .bar:hover {
+            fill: #8B5CF6; /* Bright purple on hover for consistency */
+        }
+        .x-axis path, .x-axis line, .y-axis path, .y-axis line {
+            stroke: rgba(255, 255, 255, 0.2); /* Lighter gray for axes for better contrast */
+        }
+        .x-axis text, .y-axis text {
+            fill: #D9D9D9; /* More subtle text color */
+            font-size: 0.875rem;
+        }
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            padding: 8px;
+            font: 12px sans-serif;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+            pointer-events: none;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        /* Style for the information box and main container */
+        #info-box, .bg-white {
+            background-color: #2e0631; /* Card background */
+            border: 1px solid #1A1A1A; /* Dark gray border */
+        }
+        #info-box h2 {
+            color: #F2F2F2; /* Light text color for title */
+        }
+        #info-box p {
+            color: #D9D9D9; /* More subtle text color */
+        }
+    </style>
+</head>
+<body class="bg-[#390840] text-[#ffffff]">
+
+    <div class="container mx-auto p-8 max-w-7xl">
+        <h1 class="text-4xl font-extrabold text-center mb-4">
+            The Impact of AI for Work
+        </h1>
+        <p class="text-center text-lg text-[#D9D9D9] mb-6">
+            An interactive visualization showing the potential impact of AI on employment across various sectors.
+            Click on a bar to learn more.
+        </p>
+
+        <!-- Moved the info box content to be a primary element -->
+        <div id="info-box" class="p-6 rounded-xl shadow-lg mb-8 bg-card">
+            <h2 id="sector-title" class="text-2xl font-bold mb-2 text-white">Select a sector</h2>
+            <p id="sector-description" class="text-[#D9D9D9]">
+                Click on one of the bars in the chart to see the expected impact of AI on that specific sector.
+            </p>
+        </div>
+
+        <!-- Main container for the infographic components -->
+        <div class="p-8 rounded-xl shadow-lg flex flex-col gap-8 bg-card">
+            <!-- D3 chart area now takes full width -->
+            <div id="chart-container" class="w-full">
+                <svg id="infographic-chart" class="w-full"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Use an IIFE (Immediately Invoked Function Expression) to avoid global variable pollution
+        (function() {
+            // Define the data for the infographic based on SIC codes
+            // The data is a plausible simulation of AI's impact.
+            const data = [
+                { id: "A", sector: "Agriculture, forestry and fishing", jobs_at_risk: 25, description: "The automation of agricultural machinery, precision farming using sensors and drones, and automated harvesting systems will reduce the need for manual labor." },
+                { id: "B", sector: "Mining and quarrying", jobs_at_risk: 40, description: "Autonomous drilling rigs and robots for dangerous tasks in mines and drilling platforms will take over most physical tasks." },
+                { id: "C", sector: "Manufacturing", jobs_at_risk: 60, description: "The 'Industry 4.0' revolution with smart factories, advanced robotics, and AI-controlled quality checks will almost completely automate production lines." },
+                { id: "D", sector: "Electricity, gas, steam and air conditioning supply", jobs_at_risk: 30, description: "AI optimizes power grids, predicts energy consumption, and manages renewable energy sources. The role of maintenance personnel will shift to supervision and complex repairs." },
+                { id: "E", sector: "Water supply, sewerage, waste management and remediation activities", jobs_at_risk: 35, description: "Sensors, drones, and AI models will monitor water quality and optimize waste processing, largely eliminating manual inspections and sorting." },
+                { id: "F", sector: "Construction", jobs_at_risk: 45, description: "Robots for bricklaying and demolition, drones for site inspections, and AI for project management and planning will transform the construction sector." },
+                { id: "G", sector: "Wholesale and retail trade", jobs_at_risk: 55, description: "Self-service checkouts, automated warehouses, online personal shoppers, and AI-driven inventory management will revolutionize traditional retail." },
+                { id: "H", sector: "Transportation and storage", jobs_at_risk: 70, description: "Autonomous vehicles (trucks, ships, drones) and automated logistics centers will eliminate most transport and warehouse jobs." },
+                { id: "I", sector: "Accommodation and food service activities", jobs_at_risk: 20, description: "While AI improves efficiency with automated ordering systems and kitchen robots, human interaction and experience remain crucial. The impact is therefore relatively low." },
+                { id: "J", sector: "Information and communication", jobs_at_risk: 85, description: "This is the core of the AI transformation. Development, maintenance, and data analysis are taken over by AI agents. Only the most advanced, creative, and specialized roles will remain." },
+                { id: "K", sector: "Financial and insurance activities", jobs_at_risk: 75, description: "Algorithms for trading, fraud detection, and credit analysis are already widespread. Most routine administrative and financial advisory jobs will disappear." },
+                { id: "L", sector: "Real estate activities", jobs_at_risk: 40, description: "AI algorithms for market analysis, pricing, and virtual tours will change the role of the broker from transactional to strategic advice." },
+                { id: "M", sector: "Professional, scientific and technical activities", jobs_at_risk: 65, description: "AI can screen legal documents, perform audits, and personalize marketing campaigns, reducing the need for lawyers, accountants, and marketing specialists." },
+                { id: "N", sector: "Administrative and support service activities", jobs_at_risk: 80, description: "This is the most vulnerable sector, with tasks such as data entry, customer service, and scheduling that can be performed by AI with high precision and speed." },
+                { id: "O", sector: "Public administration and defence", jobs_at_risk: 15, description: "AI will increase efficiency, but human decision-making, ethical considerations, and political processes remain essential." },
+                { id: "P", sector: "Education", jobs_at_risk: 25, description: "AI can provide personalized learning paths and automated assessment. The role of the teacher shifts from knowledge transfer to coaching and mentorship." },
+                { id: "Q", sector: "Human health and social work activities", jobs_at_risk: 30, description: "AI assists with diagnoses, image analysis, and medication management. However, the human touch and empathy of nurses and doctors remain irreplaceable." },
+                { id: "R", sector: "Arts, entertainment and recreation", jobs_at_risk: 10, description: "While AI can assist with creative tasks, the essence of art and culture remains tied to human expression and experience, keeping the impact relatively low." },
+                { id: "S", sector: "Other service activities", jobs_at_risk: 20, description: "This broad category includes personal services, where human interaction and craftsmanship often form the core, limiting the impact." }
+            ];
+
+            // Set up SVG dimensions and margins
+            const margin = {top: 40, right: 80, bottom: 250, left: 60};
+            const width = 1200 - margin.left - margin.right;
+            const height = 600 - margin.top - margin.bottom;
+
+            // Select the SVG element and set its dimensions
+            const svg = d3.select("#infographic-chart")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // Define the scales for the chart
+            const x = d3.scaleBand()
+                .range([0, width])
+                .padding(0.2);
+
+            const y = d3.scaleLinear()
+                .range([height, 0]);
+
+            // Define the domain of the scales
+            x.domain(data.map(d => d.sector));
+            y.domain([0, 100]); // Y-axis from 0 to 100
+
+            // Create the X-axis (SIC sectors)
+            svg.append("g")
+                .attr("class", "x-axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x).tickSize(0).tickPadding(10))
+                .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", "rotate(-65)"); // Rotate labels for readability
+
+            // Create the Y-axis (% jobs at risk)
+            svg.append("g")
+                .attr("class", "y-axis")
+                .call(d3.axisLeft(y).ticks(10).tickFormat(d => `${d}%`));
+
+            // Add Y-axis label
+            svg.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - margin.left)
+                .attr("x", 0 - (height / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .style("font-weight", "bold")
+                .style("fill", "#ffffff")
+                .text("Percentage of jobs that could be impacted");
+
+            // Create the bars of the chart
+            svg.selectAll(".bar")
+                .data(data)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", d => x(d.sector))
+                .attr("y", d => y(d.jobs_at_risk))
+                .attr("width", x.bandwidth())
+                .attr("height", d => height - y(d.jobs_at_risk))
+                .attr("fill", "#6D28D9") // Bright purple for bars
+                .on("mouseover", function(event, d) {
+                    // Show tooltip on hover
+                    tooltip.style("opacity", 1)
+                           .html(`<strong>${d.sector}</strong><br>${d.jobs_at_risk}%`);
+                })
+                .on("mousemove", function(event) {
+                    // Position tooltip based on mouse movement
+                    tooltip.style("left", (event.pageX + 10) + "px")
+                           .style("top", (event.pageY - 10) + "px");
+                })
+                .on("mouseout", function() {
+                    // Hide tooltip on mouse out
+                    tooltip.style("opacity", 0);
+                })
+                .on("click", function(event, d) {
+                    // Update the info box on click
+                    d3.select("#sector-title").text(`${d.id}: ${d.sector}`);
+                    d3.select("#sector-description").html(`
+                        <p class="text-lg font-semibold text-[#D9D9D9]">${d.jobs_at_risk}% of jobs could be impacted</p>
+                        <p class="text-[#D9D9D9] mt-2">${d.description}</p>
+                    `);
+                });
+
+            // Create a tooltip element
+            const tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip");
+
+            // Add responsiveness
+            window.addEventListener('resize', () => {
+                const newWidth = d3.select("#chart-container").node().clientWidth - margin.left - margin.right;
+                x.range([0, newWidth]);
+                d3.select("#infographic-chart")
+                    .attr("width", newWidth + margin.left + margin.right);
+
+                svg.selectAll(".bar")
+                    .attr("x", d => x(d.sector))
+                    .attr("width", x.bandwidth());
+
+                svg.select(".x-axis")
+                    .call(d3.axisBottom(x).tickSize(0).tickPadding(10));
+            });
+        })();
+    </script>
+</body>
+</html>
+
+
