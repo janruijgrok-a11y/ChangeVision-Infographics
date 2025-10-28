@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machiavelli in the 21st Century: An AI-Driven World Order</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Huisstijl van de originele 2025-08-28 file */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #390840; /* ChangeVision purple */
+            color: #ffffff; /* White Text */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #E5E7EB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-card {
+            background-color: #2e0631; /* Een donkerdere paarse tint voor de kaarten */
+        }
+        h2 {
+            color: #ffffff;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 450px; /* Grotere hoogte voor de bar chart */
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <main class="max-w-7xl mx-auto">
+        
+        <header class="text-center py-12">
+            <!-- Updated Header Title as requested -->
+            <h1 class="text-4xl md:text-6xl font-black gradient-text mb-4 leading-tight">Machiavelli in the 21st Century</h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">An interactive exploration of power, fear, and manipulation in the age of Artificial Intelligence.</p>
+            <p class="mt-4 text-lg italic text-gray-400">“It is better to be feared than loved, when one cannot be both.” - Niccolò Machiavelli</p>
+        </header>
+
+        <!-- Section 1: Bar Chart (Market Cap vs. GDP) - Full Width -->
+        <section class="mt-12">
+            <div class="bg-card p-6 md:p-10 rounded-xl shadow-2xl">
+                <h2 class="text-3xl font-bold mb-6 border-b border-gray-700 pb-3">The Economic Scale of Digital Empires</h2>
+                <p class="text-gray-400 mb-6">Comparison of the "Big Five" Tech companies' market capitalization against the Gross Domestic Product (GDP) of selected nations (in Trillions USD).</p>
+                <div class="chart-container">
+                    <canvas id="marketCapChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Doughnut Chart and 4 Virtues (Grid) -->
+        <section class="mt-16 pt-10">
+            <h2 class="text-4xl font-bold text-center mb-10 gradient-text">The Opaque Hand of Control</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Card 3: Black Box Decisions (Doughnut Chart) -->
+                <div class="bg-card p-6 md:p-8 rounded-xl shadow-2xl md:col-span-1">
+                    <h3 class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-3 text-white">The Black Box Effect</h3>
+                    <p class="text-gray-400 mb-6">Percentage of critical social and political decisions influenced by non-transparent AI models (e.g., loan applications, predictive policing, social media ranking).</p>
+                    <div class="chart-container h-64 md:h-72 flex items-center justify-center">
+                        <canvas id="blackBoxChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Card 4: The 4 Modern Virtues -->
+                <div class="bg-card p-6 md:p-8 rounded-xl shadow-2xl md:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-3 text-white">The Four Modern Virtues of the Prince</h3>
+                    <div class="space-y-4">
+                        <div class="flex space-x-4">
+                            <span class="text-2xl font-bold flex-shrink-0 text-[#FF7F9F]">1.</span>
+                            <div>
+                                <p class="text-xl font-semibold">Prophecy (Prediction)</p>
+                                <p class="text-gray-400">The ability to predict market and societal movements with near-perfect accuracy.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <span class="text-2xl font-bold flex-shrink-0 text-[#1DDFD6]">2.</span>
+                            <div>
+                                <p class="text-xl font-semibold">Fortuna (Scalability)</p>
+                                <p class="text-gray-400">The capacity to rapidly scale influence and infrastructure across all global territories.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <span class="text-2xl font-bold flex-shrink-0 text-[#FFE472]">3.</span>
+                            <div>
+                                <p class="text-xl font-semibold">Virtù (Agility)</p>
+                                <p class="text-gray-400">The organizational dexterity to pivot business models and absorb emerging competitors swiftly.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <span class="text-2xl font-bold flex-shrink-0 text-[#A6F684]">4.</span>
+                            <div>
+                                <p class="text-xl font-semibold">Cruelty (Data Lock-in)</p>
+                                <p class="text-gray-400">Creating indispensable ecosystems that make it impossible for users or clients to leave.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="max-w-4xl mx-auto text-center mt-16 md:mt-24 pt-8 border-t border-gray-800">
+            <h3 class="text-3xl font-bold mb-4 gradient-text">The AI Statecraft</h3>
+            <p class="text-gray-300 text-lg">
+                The 21st-century state is not defined by borders, but by data access. Tech empires have internalized Machiavelli's lessons, using the quiet, efficient power of algorithms to maintain order, create wealth, and solidify their rule. The age of visible force is giving way to the era of invisible influence.
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        // Define new colors that contrast well with the #390840 background
+        const chartColors = {
+            primary: '#1DDFD6', // Bright Cyan/Teal
+            secondary: '#FF7F9F', // Vibrant Pink
+            tertiary: '#FFE472', // Light Yellow/Gold
+            quaternary: '#A6F684', // Light Green
+            white: '#FFFFFF',
+            gray: '#D1D5DB'
+        };
+
+        // Shared function for customizing tooltips
+        const tooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.chart.canvas.id === 'marketCapChart') {
+                                label += context.raw.toFixed(2) + ' T USD';
+                            } else if (context.parsed !== undefined) {
+                                // For the doughnut chart
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const currentValue = context.raw;
+                                const percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                label = `${context.label}: ${currentValue} Decisions (${percentage}%)`;
+                            }
+                            return label;
+                        }
+                    },
+                    backgroundColor: 'rgba(46, 6, 49, 0.9)', // Dark card color for tooltip background
+                    titleColor: chartColors.white,
+                    bodyColor: chartColors.gray,
+                    borderColor: chartColors.primary,
+                    borderWidth: 1,
+                    cornerRadius: 6
+                },
+                legend: {
+                    labels: {
+                        color: chartColors.white,
+                        font: { family: "'Inter', sans-serif" }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: chartColors.gray },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    title: { display: true, color: chartColors.white }
+                },
+                y: {
+                    ticks: { color: chartColors.gray },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    title: { display: true, color: chartColors.white }
+                }
+            }
+        };
+
+
+        // 1. Bar Chart: Market Cap vs. GDP (Mock Data in Trillions USD)
+        new Chart(document.getElementById('marketCapChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Apple', 'Microsoft', 'Saudi Arabia', 'Amazon', 'Meta', 'Brazil', 'Google', 'Canada', 'Nvidia'],
+                datasets: [
+                    {
+                        label: 'Market Cap / GDP (T USD)',
+                        data: [3.15, 3.09, 1.10, 1.95, 1.25, 2.10, 2.20, 2.24, 2.15],
+                        // Alternating colors for contrast between Tech and Nations
+                        backgroundColor: (context) => {
+                            const index = context.dataIndex;
+                            // Tech companies (odd indices for example) get primary color, Nations get tertiary
+                            const techIndices = [0, 1, 3, 4, 6, 8]; // Example based on labels
+                            if (techIndices.includes(index)) {
+                                return chartColors.primary; // Tech Company (Cyan)
+                            } else {
+                                return chartColors.tertiary; // Nation GDP (Yellow)
+                            }
+                        },
+                        borderColor: '#ffffff',
+                        borderWidth: 0,
+                        borderRadius: 4,
+                    }
+                ]
+            },
+            options: {
+                ...tooltipCallback,
+                indexAxis: 'y', // Horizontal bars for better comparison
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipCallback.plugins,
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        ...tooltipCallback.scales.x,
+                        title: { display: true, text: 'Value (Trillions USD)', color: chartColors.white }
+                    },
+                    y: {
+                        ...tooltipCallback.scales.y,
+                        // Set the y-axis title to be blank since the labels are descriptive
+                        title: { display: false }
+                    }
+                }
+            }
+        });
+
+        // 2. Doughnut Chart: Black Box Decisions
+        new Chart(document.getElementById('blackBoxChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Opaque "Black Box" Decisions', 'Explainable Decisions'],
+                datasets: [{
+                    data: [65, 35],
+                    // Adapted colors for the purple theme
+                    backgroundColor: [chartColors.secondary, chartColors.quaternary],
+                    borderColor: '#2e0631', // Use card background color for border contrast
+                    borderWidth: 6
+                }]
+            },
+            options: {
+                ...tooltipCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                 plugins: {
+                    ...tooltipCallback.plugins,
+                    legend: { position: 'bottom', labels: { color: chartColors.white } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
